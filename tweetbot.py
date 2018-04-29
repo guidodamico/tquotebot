@@ -2,17 +2,9 @@ from __future__ import (absolute_import, division,
                         print_function, unicode_literals)
 import random
 import time
-<<<<<<< HEAD
 # import sys
-=======
-import sys
->>>>>>> 452c38f18d31631d159a2bf095f59ae3e40935b3
 import os
-#import tweepy  # for tweeting
-try:
-    import secrets  # shhhh
-except ImportError:
-    pass
+import tweepy  # for tweeting
 
 
 def get_tweet(f_next, f_past):
@@ -45,7 +37,6 @@ def tweet(message):
 
 
 def main():
-<<<<<<< HEAD
     thepath = os.environ.get('FILES_PATH')
     f_next = os.path.join(thepath, "next_quotes.txt")
     f_past = os.path.join(thepath, "past_quotes.txt")
@@ -55,29 +46,12 @@ def main():
     # log_file.write('quote')
     tweet(quote)  # and finally tweets
     # log_file.close()
-=======
-    f_next = "next_quotes.txt"
-    f_past = "past_quotes.txt"
-    quote = get_tweet(f_next, f_past)
-    # old_stdout = sys.stdout
-    log_file = open('all.log', 'a')
-    log_file.write(quote)
-    #tweet(quote)  # and finally tweets
-    log_file.close()
->>>>>>> 452c38f18d31631d159a2bf095f59ae3e40935b3
 
 
 if __name__ == "__main__":
     ODDS = 4
     while True:
-<<<<<<< HEAD
-        time.sleep(random.randint(3300, 3900))  # we make it sleep up to 5 minutes
+        time.sleep(random.randint(30, 60))  # we make it sleep up to 5 minutes
         die_roll = random.choice(range(ODDS))  # rolls a die
         if die_roll == 0:
-=======
-        time.sleep(random.randint(1, 5))  # we make it sleep up to 5 minutes
-        die_roll = random.choice(range(ODDS))  # rolls a die
-        if die_roll == 0:
-            print("We're tweeting!")
->>>>>>> 452c38f18d31631d159a2bf095f59ae3e40935b3
             main()
