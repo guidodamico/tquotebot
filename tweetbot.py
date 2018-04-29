@@ -1,8 +1,8 @@
 from __future__ import (absolute_import, division,
                         print_function, unicode_literals)
 import random
-from time import sleep
-import sys
+import time
+# import sys
 import os
 import tweepy  # for tweeting
 try:
@@ -40,19 +40,22 @@ def tweet(message):
     return
 
 
+def main():
+    thepath = os.environ.get('FILES_PATH')
+    f_next = os.path.join(thepath, "next_quotes.txt")
+    f_past = os.path.join(thepath, "past_quotes.txt")
+    quote = get_tweet(f_next, f_past)
+    # old_stdout = sys.stdout
+    # log_file = open('all.log', 'a')
+    # log_file.write('quote')
+    tweet(quote)  # and finally tweets
+    # log_file.close()
+
+
 if __name__ == "__main__":
-    #scriptdir = os.path.dirname(os.path.realpath(sys.argv[0]))
-    #f_next = os.path.join(scriptdir, "next_quotes.txt")
-    #f_past = os.path.join(scriptdir, "past_quotes.txt")
-    f_next = "next_quotes.txt"
-    f_past = "past_quotes.txt"
     ODDS = 4
-    die_roll = random.choice(range(ODDS))  # rolls a die
-    if die_roll == 0:
-        sleep(random.randint(1, 300))  # we make it sleep up to 5 minutes
-        quote = get_tweet(f_next, f_past)
-        old_stdout = sys.stdout
-        log_file = open('all.log', 'a')
-        sys.stdout = log_file
-        tweet(quote)  # and finally tweets
-        log_file.close()
+    while True:
+        time.sleep(random.randint(3300, 3900))  # we make it sleep up to 5 minutes
+        die_roll = random.choice(range(ODDS))  # rolls a die
+        if die_roll == 0:
+            main()
