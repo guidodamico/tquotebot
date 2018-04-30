@@ -25,14 +25,10 @@ def tweet(message):
     """Tweets the quote"""
     consumer_key = os.environ.get('TWITTER_CONSUMER_KEY')
     consumer_secret = os.environ.get('TWITTER_CONSUMER_SECRET')
-    print(consumer_key)
-    print(consumer_secret)
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.secure = True
     access_token = os.environ.get('TWITTER_ACCESS_TOKEN')
     access_token_secret = os.environ.get('TWITTER_ACCESS_TOKEN_SECRET')
-    print(access_token)
-    print(access_token_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)  # API instance
     print("Posting message {}".format(message))
@@ -55,7 +51,7 @@ def main():
 if __name__ == "__main__":
     ODDS = 4
     while True:
-        time.sleep(random.randint(60, 90))  # we make it sleep up to 5 minutes
+        time.sleep(random.randint(3300, 3900))  # we make it sleep up to 5 minutes
         die_roll = random.choice(range(ODDS))  # rolls a die
         print("Roll of die... ", str(die_roll))
         if die_roll == 0:
